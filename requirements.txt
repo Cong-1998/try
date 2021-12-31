@@ -4,10 +4,6 @@ youtokentome
 regex
 streamlit-tags
 streamlit-player
-langdetect
-vaderSentiment
 tensorflow-addons
 tensorflow-gpu
-pandas==1.2.3
-numpy==1.19.5
-tensorflow==2.4.0
+tensorflow==2.2.0
