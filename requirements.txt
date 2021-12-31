@@ -1,0 +1,11 @@
+streamlit
+malaya
+youtokentome
+regex
+streamlit-tags
+streamlit-player
+langdetect
+vaderSentiment
+pandas==1.2.3
+numpy==1.19.5
+
