@@ -99,7 +99,7 @@ st.write('\n')
 st.write('\n')
 
 # input text
-TextBox = st.text_area('Masukkan teks untuk menyemak kebolehbacaan1', height=200)
+TextBox1 = st.text_area('Masukkan teks untuk menyemak kebolehbacaan1', height=200)
 
 # run the test
 test = st.button("Kira Kebolehbacaan1")
@@ -111,7 +111,7 @@ if test:
     with my_expander:
         st.write(new_content1)
     
-    zxc1 = malaya.emotion.multinomial
+    zxc1 = malaya.emotion.multinomial()
     labels1 = []
     labels1 = zxc1.predict(["new_content1"])
     st.write(labels1)
