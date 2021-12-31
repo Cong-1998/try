@@ -112,12 +112,6 @@ st.write(
 - Teks perlu dalam 300 perkataan.
 - Tetapi kami memperbaiki had ini dengan [formula ini](#kalkulator-khadijah-rohani-yang-diperbaikan).
     """)
-image = Image.open('formula.jpg')
-st.image(image, caption='Formula Tahap Gred Khadijah Rohani')
-st.write("\n")
-image2 = Image.open('table.jpg')
-st.image(image2, caption='Jadual Tahap Gred Khadijah Rohani')
-st.write("\n")
 
 toc.header("Tukar kepada fail CSV")
 st.write('Video ini akan mengajar anda cara menukar fail excel kepada fail csv.')
