@@ -90,7 +90,7 @@ if test:
     with my_expander:
         st.write(new_content)
     
-    zxc = malaya.emotion.transformer(model = 'albert')
+    zxc = malaya.emotion.multinomial()
     labels = []
     labels = zxc.predict(["new_content"])
     st.write(labels)
@@ -98,23 +98,7 @@ if test:
 st.write('\n')
 st.write('\n')
 
-# input text
-TextBox1 = st.text_area('Masukkan teks untuk menyemak kebolehbacaan1', height=200)
 
-# run the test
-test = st.button("Kira Kebolehbacaan1")
-
-new_content1 = cleaning(TextBox1)
-
-if test:
-    my_expander = st.expander(label='Teks yang Dibersihkan')
-    with my_expander:
-        st.write(new_content1)
-    
-    zxc1 = malaya.emotion.multinomial()
-    labels1 = []
-    labels1 = zxc1.predict(["new_content1"])
-    st.write(labels1)
 
 toc.header("Tahap Gred Khadijah Rohani")
 st.write("Kebolehbacaan Khadijah Rohani ialah pengukuran kebolehbacaan sesuatu bahan untuk membolehkan para pendidik, ibu bapa dan para penulis cuba menyesuaikan kebolehan membaca murid-murid dengan bahan yang mereka baca.")
