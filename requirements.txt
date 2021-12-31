@@ -6,6 +6,7 @@ streamlit-tags
 streamlit-player
 langdetect
 vaderSentiment
+tensorflow-addons
 pandas==1.2.3
 numpy==1.19.5
 tensorflow==2.4.0
