@@ -98,6 +98,24 @@ if test:
 st.write('\n')
 st.write('\n')
 
+# input text
+TextBox = st.text_area('Masukkan teks untuk menyemak kebolehbacaan1', height=200)
+
+# run the test
+test = st.button("Kira Kebolehbacaan1")
+
+new_content1 = cleaning(TextBox1)
+
+if test:
+    my_expander = st.expander(label='Teks yang Dibersihkan')
+    with my_expander:
+        st.write(new_content1)
+    
+    zxc1 = malaya.emotion.multinomial
+    labels1 = []
+    labels1 = zxc1.predict(["new_content1"])
+    st.write(labels1)
+
 toc.header("Tahap Gred Khadijah Rohani")
 st.write("Kebolehbacaan Khadijah Rohani ialah pengukuran kebolehbacaan sesuatu bahan untuk membolehkan para pendidik, ibu bapa dan para penulis cuba menyesuaikan kebolehan membaca murid-murid dengan bahan yang mereka baca.")
 st.write("Dalam kalkulator ini,")
@@ -117,34 +135,6 @@ toc.header("Tukar kepada fail CSV")
 st.write('Video ini akan mengajar anda cara menukar fail excel kepada fail csv.')
 # Embed a youtube video
 st_player("https://www.youtube.com/watch?v=IBbJzzj5r90")
-st.write('\n')
-
-# new formula
-toc.header('Kalkulator Khadijah Rohani yang Diperbaikan')
-st.write("Formula ini ditambank baik oleh kami dengan menambah pembolehuba malar yang baru.")
-image = Image.open('formula2.jpg')
-st.image(image, caption='Formula Tahap Gred Khadijah Rohani')
-st.write("\n")
-TextBox2 = st.text_area('Masukkan teks', height=200)
-test2 = st.button("Kira")
-new_content2 = cleaning(TextBox2)
-if test2:
-    my_expander = st.expander(label='Teks yang Dibersihkan')
-    with my_expander:
-        st.write(new_content2)
-    r = Readability(new_content2)
-    statis = r.statistics()
-    word = list(statis.items())[0][1]
-    sentence = list(statis.items())[1][1]
-    syllable = list(statis.items())[2][1]
-
-    score = (0.3793*word/sentence)+(0.0207*syllable*300/word)-13.988
-
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Skor Khadijah Rohani", round(score, 1))
-    col2.metric("Jumlah Perkataan", word)
-    col3.metric("Jumlah Ayat", sentence)
-    col4.metric("Jumlah Suku Kata", syllable)
 st.write('\n')
 
 toc.generate()
