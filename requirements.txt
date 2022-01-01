@@ -5,3 +5,4 @@ youtokentome
 regex
 streamlit-tags
 streamlit-player
+tensorflow-addons
