@@ -4,6 +4,9 @@ from streamlit_player import st_player
 import re
 import pandas as pd
 import malaya
+import bz2
+import pickle
+import _pickle as cPickle
 
 # table of content
 class Toc:
