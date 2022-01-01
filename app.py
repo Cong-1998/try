@@ -85,7 +85,14 @@ if file_upload is not None:
     st.write(data)
     name = file_upload.name.replace('.csv', '')
     name = name+"_labelled.csv"
-    
+
+def en_emotion(text):
+    with bz2.BZ2File('Emotion/en_emotion.pbz2', 'rb') as training_model:
+        en_model = cPickle.load(training_model)
+
+    label = en_model.predict([text])
+    return label
+
 # run the program
 result = st.button("Run")
 if result:
@@ -107,11 +114,16 @@ if result:
     #final_df = detect_emotion(data, malaya)
     
     # malay emotion analysis
-    #ms_model = malaya.emotion.multinomial()
-    ms_model = malaya.emotion.transformer(model = 'albert')
+    ms_model = malaya.emotion.multinomial()
+    #ms_model = malaya.emotion.transformer(model = 'albert')
     clean = data['comment'].values.tolist()
     ms_emo = ms_model.predict(clean)
     data = data.assign(Emotion = ms_emo)
+    # english emotion analysis
+    data.loc[df['Language'] == "en", 'Emotion'] = data['clean'].apply(en_emotion)
+
+    # remove unwanted coulmns
+    data = data.drop(['Language', 'clean'], axis = 1)
     
     # download labelled file
     st.write("Below is the labelled file, click button to download.")
@@ -144,7 +156,6 @@ if test:
     
 st.write('\n')
 st.write('\n')
-
 
 
 toc.header("Tahap Gred Khadijah Rohani")
