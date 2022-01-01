@@ -77,6 +77,53 @@ toc.placeholder()
 toc.header('Kalkulator Khadijah Rohani')
 st.write("Apakah kebolehbacaan [Khadijah Rohani](#tahap-gred-khadijah-rohani)❓")
 
+# upload file
+toc.header("Upload csv file")
+file_upload = st.file_uploader("", type=["csv"])
+if file_upload is not None:
+    data = pd.read_csv(file_upload, encoding='unicode_escape')
+    st.write(data)
+    name = file_upload.name.replace('.csv', '')
+    name = name+"_labelled.csv"
+    
+# run the program
+result = st.button("Run")
+if result:
+    wc = []
+    ans = []
+    st.write("Be patient, need to wait 2 to 3 minutes :smile:")
+    st.write("If raising error, please reduce the number of clusters")
+
+    # Topic clustering
+    #wc, ans, topic_df = processing(data, gensim, malaya, word_tokenize, np, MovieGroupProcess, pd, WordCloud, int_val, list_stop)
+
+    # Detect language
+    #topic_df['Language'] = topic_df['comment'].apply(detect_lang)
+
+    # Detect sentiment
+    #sentiment_df = detect_sentiment(topic_df, malaya)
+
+    # Detect emotion
+    #final_df = detect_emotion(data, malaya)
+    
+    # malay emotion analysis
+    ms_model = malaya.emotion.multinomial()
+    #ms_model = malaya.emotion.transformer(model = 'albert')
+    clean = data['comment'].values.tolist()
+    ms_emo = ms_model.predict(clean)
+    data = data.assign(Emotion = ms_emo)
+    
+    # download labelled file
+    st.write("Below is the labelled file, click button to download.")
+    csv = data.to_csv(index=False)
+    st.download_button(
+        label="Download data as CSV",
+        data=csv,
+        file_name=name,
+        mime='text/csv',
+    )
+    st.write('\n')
+    
 # input text
 TextBox = st.text_area('Masukkan teks untuk menyemak kebolehbacaan', height=200)
 
