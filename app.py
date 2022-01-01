@@ -115,6 +115,7 @@ if result:
 
     # Detect emotion
     #final_df = detect_emotion(data, malaya)
+    st.write(en_emotion("He mad me."))
     
     # malay emotion analysis
     ms_model = malaya.emotion.multinomial()
