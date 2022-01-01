@@ -107,8 +107,8 @@ if result:
     #final_df = detect_emotion(data, malaya)
     
     # malay emotion analysis
-    ms_model = malaya.emotion.multinomial()
-    #ms_model = malaya.emotion.transformer(model = 'albert')
+    #ms_model = malaya.emotion.multinomial()
+    ms_model = malaya.emotion.transformer(model = 'albert')
     clean = data['comment'].values.tolist()
     ms_emo = ms_model.predict(clean)
     data = data.assign(Emotion = ms_emo)
