@@ -123,7 +123,7 @@ if result:
     ms_emo = ms_model.predict(clean)
     data = data.assign(Emotion = ms_emo)
     # english emotion analysis
-    data.loc[df['Language'] == "en", 'Emotion'] = data['clean'].apply(en_emotion)
+    data.loc[df['Language'] == "en", 'Emotion'] = data['comment'].apply(en_emotion)
 
     # remove unwanted coulmns
     data = data.drop(['Language', 'clean'], axis = 1)
